@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b4gkg3wonj1ao"]
+
+[ext_resource type="Script" uid="uid://coxuuvd4m8jry" path="res://scripts/animal_stacking_game.gd" id="1_go8c7"]
+[ext_resource type="PackedScene" uid="uid://dkfybum1em5q" path="res://scenes/Ground.tscn" id="1_yx6jm"]
+[ext_resource type="Script" uid="uid://caseh7v8s458l" path="res://scripts/spawn_point.gd" id="2_fqoir"]
+[ext_resource type="PackedScene" uid="uid://dd0qm2lpkcfvp" path="res://scenes/gorilla.tscn" id="3_5t22p"]
+[ext_resource type="PackedScene" uid="uid://dp72lbv5n46du" path="res://scenes/panda.tscn" id="4_owdne"]
+[ext_resource type="PackedScene" uid="uid://6ybn3vamlt43" path="res://scenes/tiger.tscn" id="5_3ncyt"]
+[ext_resource type="PackedScene" uid="uid://t7ynga23hvek" path="res://scenes/game_over_area.tscn" id="5_ad01d"]
+[ext_resource type="Script" uid="uid://tej7bg8edovy" path="res://scripts/game_over_area.gd" id="6_1seb0"]
+[ext_resource type="PackedScene" uid="uid://b2iyr0fjctb3n" path="res://scenes/giraffe.tscn" id="6_kpi0k"]
+[ext_resource type="PackedScene" uid="uid://fssn1flebkcf" path="res://scenes/zebra.tscn" id="8_kpi0k"]
+[ext_resource type="PackedScene" uid="uid://m503gbvb35x8" path="res://scenes/game_overs_screen.tscn" id="11_kpi0k"]
+
+[node name="Animal Stacking Game" type="Node2D" unique_id=5708674]
+script = ExtResource("1_go8c7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=989495358]
+zoom = Vector2(2, 2)
+
+[node name="Ground" parent="." unique_id=665668744 instance=ExtResource("1_yx6jm")]
+position = Vector2(0, 27)
+
+[node name="Spawn Point" type="Marker2D" parent="." unique_id=362798014 node_paths=PackedStringArray("main_camera")]
+position = Vector2(0, -110)
+script = ExtResource("2_fqoir")
+animal_scene = Array[PackedScene]([ExtResource("4_owdne"), ExtResource("5_3ncyt"), ExtResource("6_kpi0k"), ExtResource("3_5t22p"), ExtResource("8_kpi0k")])
+main_camera = NodePath("../Camera2D")
+
+[node name="Game Over Area" parent="." unique_id=783880529 instance=ExtResource("5_ad01d")]
+position = Vector2(0, 40)
+script = ExtResource("6_1seb0")
+
+[node name="GameOversScreen" parent="." unique_id=1935292512 instance=ExtResource("11_kpi0k")]
+
+[connection signal="body_entered" from="Game Over Area" to="." method="_on_game_over_area_body_entered"]
