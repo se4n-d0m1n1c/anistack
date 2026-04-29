@@ -3,6 +3,7 @@ extends Marker2D
 @export var animal_scene: Array[PackedScene]
 @export var spawn_delay: float = 1.0 
 @export var main_camera: Camera2D
+@export var game_over_menu: PackedScene
 @export var move_amount = 50
 @export var threshold_distance = 50
 
@@ -32,4 +33,5 @@ func _on_animal_dropped(animal_y):
 		global_position.y -= move_amount
 		if main_camera:
 			main_camera.global_position.y -= move_amount
+			game_over_menu.global_position.y -= move_amount
 	spawn_new_animal()

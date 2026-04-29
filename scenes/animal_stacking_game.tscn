@@ -26,6 +26,7 @@ position = Vector2(0, -110)
 script = ExtResource("2_fqoir")
 animal_scene = Array[PackedScene]([ExtResource("4_owdne"), ExtResource("5_3ncyt"), ExtResource("6_kpi0k"), ExtResource("3_5t22p"), ExtResource("8_kpi0k")])
 main_camera = NodePath("../Camera2D")
+game_over_menu = ExtResource("11_kpi0k")
 
 [node name="Game Over Area" parent="." unique_id=783880529 instance=ExtResource("5_ad01d")]
 position = Vector2(0, 40)
